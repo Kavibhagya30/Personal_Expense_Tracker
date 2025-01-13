@@ -16,27 +16,27 @@
   <table><center>
     <tr>
       <td class="td">User Name:</td>
-      <td>kavibhagya</td>
+      <td id="username"></td>
   </tr>
   <tr>
     <td class="td">Expense Category:</td>
-    <td>stationary</td>
+    <td></td>
   </tr>
   <tr>
     <td class="td">
       Expense Description:
     </td>
-    <td>record notes</td>
+    <td id="title"></td>
   </tr>
   <tr>
     <td class="td">
       Amount spent:
     </td>
-    <td>Rs.000000000000500</td>
+    <td id="amount">Rs.</td>
   </tr>
   <tr>
     <td class="td">Payment mode[UPI/cash]:</td>
-    <td>UPI</td>
+    <td></td>
   </tr>
   <tr>
     <td class="td">Date:</td>
@@ -46,3 +46,18 @@
 </center>
 </body>
 </div>
+</html>
+<script>
+  const username=document.getElementById("username")
+  const title=document.getElementById("title")
+  const amount=document.getElementById("amount")
+  let name=JSON.parse(localStorage.getItem('username'))
+  let t=JSON.parse(localStorage.getItem('title'))
+  let a=JSON.parse(localStorage.getItem('amount'))
+  username.textContent=name
+  title.textContent=t
+  amount.textContent=a
+  console.log(name)
+  console.log(t)
+  console.log(a)
+</script>

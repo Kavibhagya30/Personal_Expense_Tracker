@@ -11,7 +11,7 @@ const expenditureValue = document.getElementById("expenditure-value");
 const balanceValue = document.getElementById("balance-amount");
 const list = document.getElementById("list");
 let tempAmount = 0;
-
+    
 //Set Budget Part
 totalAmountButton.addEventListener("click", () => {
   tempAmount = totalAmount.value;
@@ -57,6 +57,8 @@ const modifyElement = (element, edit = false) => {
 
 //Function To Create List
 const listCreator = (expenseName, expenseValue) => {
+  localStorage.setItem('title',JSON.stringify(productTitle.value))
+  localStorage.setItem('amount',JSON.stringify(userAmount.value))
   let sublistContent = document.createElement("div");
   sublistContent.classList.add("sublist-content", "flex-space");
   list.appendChild(sublistContent);
@@ -73,8 +75,15 @@ const listCreator = (expenseName, expenseValue) => {
   deleteButton.addEventListener("click", () => {
     modifyElement(deleteButton);
   });
+  let showdetails=document.createElement("a");
+  showdetails.textContent="Show details"
+  showdetails.style.fontsize="1.2em";
+  showdetails.style.textDecoration="none";
+  showdetails.href="index.html";
+  showdetails.onclick="showdetails()";
   sublistContent.appendChild(editButton);
   sublistContent.appendChild(deleteButton);
+  sublistContent.appendChild(showdetails);
   document.getElementById("list").appendChild(sublistContent);
 };
 
@@ -101,3 +110,9 @@ checkAmountButton.addEventListener("click", () => {
   productTitle.value = "";
   userAmount.value = "";
 });
+function showdetails(){
+  
+  
+  window.open("index.html")
+  
+  }

@@ -4,6 +4,9 @@ const username = document.querySelector('#username');
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const cpassword = document.querySelector('#cpassword');
+function storedata(){
+localStorage.setItem('username',JSON.stringify(username.value))
+}
 
 form.addEventListener('submit',(e)=>{
     
