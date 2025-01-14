@@ -40,7 +40,7 @@
   </tr>
   <tr>
     <td class="td">Date:</td>
-    <td>2/2/2024                </td>
+    <td id="date">    </td>
   </tr>
   </table>
 </center>
@@ -57,7 +57,7 @@
   username.textContent=name
   title.textContent=t
   amount.textContent=a
-  console.log(name)
-  console.log(t)
-  console.log(a)
+  const date=document.getElementById("date")
+  const d=new Date()
+  date.textContent=d.getDate()+"-"+d.getMonth()+1+"-"+d.getFullYear()
 </script>
