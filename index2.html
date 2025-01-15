@@ -2,15 +2,83 @@
     <head>
         <title>Personal_Expense_Tracker</title>
         <link rel="icon" href="download.png"></link>
-        <link rel="stylesheet" href="style.css"></link>
+        <link rel="stylesheet" href="style.css">
+        
+    <style>
+        .line{
+            width: 2px;
+            height:400px;
+            background-color:darkslateblue ;
+            margin-left:450px;
+            margin-top: 100px;
+            display:inline-block;
+            
+        }
+        .rule{
+            width: 500px;
+            height: 2px;
+            background-color:darkslateblue ;
+            margin-left:450px;
+            margin-top: 0px;
+            
+        }
+        .one,.two,.three,.four,.five{
+            width:60px;
+            margin-left: 30px;
+            display:inline-block;
+            animation-direction: reverse;
+        }
+        .one{
+            height: 300px;
+            margin-top: 0px;
+            
+        }
+        
+        .two{
+            height:400px;
+        }
+        .three{
+            height:50px;
+        }
+        .four{
+            height:100px;
+        }
+        .five{
+            height:250px;
+        }
+        .text{
+            margin-left: 37px;
+            height:0px;
+            width:60pz;
+            display: inline-block;
+            color: azure;
+            
+        }
+    </style>
     </head>
     <body>
     <center>
     <h1>
-        Expense List:
+        Expense Chart
     </h1>
     </center>
-    
-</body>
+    <div class="line"></div>
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+        <div class="five"></div>
 
+    <div class="rule">
+        <div class="text">Transport<br>(Rs.300)</div>
+        <div class="text">     Fees<br>(Rs.400)</div>
+        <div class="text">   Snacks<br>(Rs.50)</div>
+        <div class="text">Stationary<br>(Rs.150)</div>
+        <div class="text">Food<br>(Rs.250)</div>
+    </div>
+</body>
 </html>
+<script>
+    const x=document.getElementsByClassName("one")
+    
+</script>
