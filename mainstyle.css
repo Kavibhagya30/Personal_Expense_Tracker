@@ -47,7 +47,7 @@ body {
     margin-bottom: 0.6em;
 }
 
-.container input {
+.container input, .container select {
     display: block;
     width: 100%;
     padding: 0.6em 0.3em;
@@ -59,7 +59,7 @@ body {
     margin-bottom: 0.6em;
 }
 
-.container input:focus {
+.container input:focus, .container select:focus {
     border-color: #587ef4;
 }
 
@@ -171,4 +171,15 @@ body {
         grid-template-columns: 1fr;
         gap: 1em;
     }
+}
+button{
+    background-color: #792099;
+    color:white;
+    border: 1px solid #792099;
+    border-radius: 5px;
+    padding:10px;
+    margin:20px 0px;
+    cursor:pointer;
+    font-size:20px;
+    width:100%;
 }
