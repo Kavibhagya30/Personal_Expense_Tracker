@@ -25,56 +25,36 @@
             width: 2px;
             height:400px;
             background-color:darkslateblue ;
-            margin-left:450px;
+            margin-left:200px;
             margin-top: 100px;
             display:inline-block;
             
         }
         .rule{
-            width: 500px;
+            width: 1000px;
             height: 2px;
             background-color:darkslateblue ;
-            margin-left:450px;
+            margin-left:200px;
             margin-top: 0px;
             
         }
-        .one,.two,.three,.four,.five{
+        .one,.two,.three,.four,.five,.six,.seven,.eight,.nine{
             width:60px;
             margin-left: 30px;
             display:inline-block;
             animation-direction: reverse;
             background-color: darkslateblue;
-        }
-        .one{
-            height: 300px;
-            margin-top: 0px;
-            background-color: darkslateblue;
-        }
-        
-        .two{
-            height:400px;
-            background-color: darkslateblue;
-        }
-        .three{
-            height:50px;
-            background-color: darkslateblue;
-        }
-        .four{
-            height:100px;
-            background-color: darkslateblue;
-        }
-        .five{
-            height:250px;
-            background-color: darkslateblue;
+            height:0px;
         }
         .text{
-            margin-left: 37px;
+            margin-left: 30px;
             height:0px;
             width:60pz;
             display: inline-block;
             color: azure;
             
         }
+        
     </style>
     </head>
     <body>
@@ -89,17 +69,95 @@
         <div class="three"></div>
         <div class="four"></div>
         <div class="five"></div>
+        <div class="six"></div>
+        <div class="seven"></div>
+        <div class="eight"></div>
+        <div class="nine"></div>
 
     <div class="rule">
         <div class="text">Transport<br>(Rs.300)</div>
-        <div class="text">     Fees<br>(Rs.400)</div>
+        <div class="text">     Food&Dining<br>(Rs.400)</div>
         <div class="text">   Snacks<br>(Rs.50)</div>
-        <div class="text">Stationary<br>(Rs.150)</div>
-        <div class="text">Food<br>(Rs.250)</div>
+        <div class="text">Travel<br>(Rs.150)</div>
+        <div class="text">Entertainment<br>(Rs.250)</div>
+        <div class="text">Health<br>(Rs.250)</div>
+        <div class="text">Shopping<br>(Rs.250)</div>
+        <div class="text">Education<br>(Rs.250)</div>
+        <div class="text">Miscellaneous<br>(Rs.250)</div>
+
+
+
+
     </div>
 </body>
 </html>
 <script>
-    const x=document.getElementsByClassName("one")
-    
+    const x1=document.querySelector('.one')
+    const x2=document.querySelector('.two')
+    const x3=document.querySelector('.three')
+    const x4=document.querySelector('.four')
+    const x5=document.querySelector('.five')
+    const x6=document.querySelector('.six')
+    const x7=document.querySelector('.seven')
+    const x8=document.querySelector('.eight')
+    const x9=document.querySelector('.nine')
+    var m=n=o=p=q=r=s=t=u=0
+    let d=JSON.parse(localStorage.getItem('graphdata'))||[]
+    d.forEach((item,index)=>{
+        if(item.title=="Snacks"){
+            m+=parseInt(item.amount);
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x3.style.height=m+"px";
+            console.log(m)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x3.style.height=m*0.75+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x3.style.height=m*0.5+"px"
+            }
+            
+        }
+        else if(item.title=="Food & Dining"){
+            n+=parseInt(item.amount)
+            x2.style.height=n+"px"
+            console.log(n)
+        }
+        else if(item.title=="Transportation"){
+            o+=parseInt(item.amount)
+            x1.style.height=o+"px"
+            console.log(o)
+        }
+        else if(item.title=="Travel"){
+            p+=parseInt(item.amount)
+            x4.style.height=p+"px"
+            console.log(p)
+        }
+        else if(item.title=="Entertainment"){
+            q+=parseInt(item.amount)
+            x5.style.height=q+"px"
+            console.log(q)
+        }
+        else if(item.title=="Health & Wellness"){
+            r+=parseInt(item.amount)
+            x6.style.height=r+"px"
+            console.log(r)
+        }
+
+        else if(item.title=="Shopping"){
+            s+=parseInt(item.amount)
+            x7.style.height=s+"px"
+            console.log(s)
+        }
+        else if(item.title=="Education"){
+            t+=parseInt(item.amount)
+            x8.style.height=t+"px"
+            console.log(t)
+        }
+        else if(item.title=="Miscellaneous"){
+            u+=parseInt(item.amount)
+            x9.style.height=u+"px"
+            console.log(u)
+        }    
+})
 </script>

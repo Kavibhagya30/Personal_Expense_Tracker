@@ -57,12 +57,25 @@ const modifyElement = (element, edit = false) => {
 
 //Function To Create List
 const listCreator = (expenseName, expenseValue) => {
-  localStorage.setItem('title',JSON.stringify(productTitle.value))
-  localStorage.setItem('amount',JSON.stringify(userAmount.value))
+  if(!expenseName || !expenseValue){
+    alert("undefined values");
+  }
+  const date=new Date()
+  const title=expenseName
+  const amount=expenseValue
+  let data=JSON.parse(localStorage.getItem('data'))||[]
+  const values={date,title,amount}
+  data.push(values)
+  localStorage.setItem('data',JSON.stringify(data))
+  let d=JSON.parse(localStorage.getItem('graphdata'))||[]
+  const value={date,title,amount}
+  d.push(value)
+  localStorage.setItem('graphdata',JSON.stringify(d))
+  data.forEach((item,index)=>{
   let sublistContent = document.createElement("div");
   sublistContent.classList.add("sublist-content", "flex-space");
   list.appendChild(sublistContent);
-  sublistContent.innerHTML = `<p class="product">${expenseName}</p><p class="amount">${expenseValue}</p>`;
+  sublistContent.innerHTML = `<p class="product">${item.title}</p><p class="amount">${item.amount}</p>`;
   let editButton = document.createElement("button");
   editButton.classList.add("fa-solid", "fa-pen-to-square", "edit");
   editButton.style.fontSize = "1.2em";
@@ -73,10 +86,12 @@ const listCreator = (expenseName, expenseValue) => {
   deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
   deleteButton.style.fontSize = "1.2em";
   deleteButton.addEventListener("click", () => {
+    data.splice(index,1)
+    localStorage.setItem('data',JSON.stringify(data))
     modifyElement(deleteButton);
   });
   let showdetails=document.createElement("a");
-  showdetails.textContent="Show details"
+  showdetails.textContent="Show details";
   showdetails.style.fontsize="1.2em";
   showdetails.style.textDecoration="none";
   showdetails.href="index.html";
@@ -85,7 +100,13 @@ const listCreator = (expenseName, expenseValue) => {
   sublistContent.appendChild(deleteButton);
   sublistContent.appendChild(showdetails);
   document.getElementById("list").appendChild(sublistContent);
-};
+  console.log(item.date)
+});
+
+  
+}
+
+
 
 //Function To Add Expenses
 checkAmountButton.addEventListener("click", () => {
@@ -116,3 +137,7 @@ function showdetails(){
   window.open("index.html")
   
   }
+  function display(){
+    let data=JSON.parse(localStorage.getItem('data'))||[]
+  }
+  
