@@ -57,21 +57,23 @@ const modifyElement = (element, edit = false) => {
 
 //Function To Create List
 const listCreator = (expenseName, expenseValue) => {
-  if(!expenseName || !expenseValue){
-    alert("undefined values");
-  }
+  if(expenseName && expenseValue){
+  document.getElementById("list").textContent="";
   const date=new Date()
   const title=expenseName
   const amount=expenseValue
-  let data=JSON.parse(localStorage.getItem('data'))||[]
-  const values={date,title,amount}
+  let dat=(JSON.parse(localStorage.getItem("username")))
+  dat=JSON.stringify(dat);
+  console.log(dat)
+  let data=JSON.parse(localStorage.getItem(dat))||[]
+  const values={title,amount,date}
   data.push(values)
-  localStorage.setItem('data',JSON.stringify(data))
-  let d=JSON.parse(localStorage.getItem('graphdata'))||[]
-  const value={date,title,amount}
-  d.push(value)
-  localStorage.setItem('graphdata',JSON.stringify(d))
+  localStorage.setItem(dat,JSON.stringify(data))
+ 
+  const value={title,amount}
   data.forEach((item,index)=>{
+    const t=item.title
+    const a=item.amount
   let sublistContent = document.createElement("div");
   sublistContent.classList.add("sublist-content", "flex-space");
   list.appendChild(sublistContent);
@@ -85,29 +87,30 @@ const listCreator = (expenseName, expenseValue) => {
   let deleteButton = document.createElement("button");
   deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
   deleteButton.style.fontSize = "1.2em";
-  deleteButton.addEventListener("click", () => {
+  deleteButton.addEventListener('click', () => {
     data.splice(index,1)
-    localStorage.setItem('data',JSON.stringify(data))
-    modifyElement(deleteButton);
-  });
+    localStorage.setItem(dat,JSON.stringify(data))
+    modifyElement(deleteButton)
+  })
   let showdetails=document.createElement("a");
   showdetails.textContent="Show details";
   showdetails.style.fontsize="1.2em";
   showdetails.style.textDecoration="none";
+  showdetails.style.cursor="pointer";
   showdetails.href="index.html";
-  showdetails.onclick="showdetails()";
+  showdetails.addEventListener('click',()=>{
+    localStorage.setItem('title',JSON.stringify(item.title))
+    localStorage.setItem('amount',JSON.stringify(item.amount))
+    localStorage.setItem('date',JSON.stringify(item.date))
+  })
   sublistContent.appendChild(editButton);
   sublistContent.appendChild(deleteButton);
   sublistContent.appendChild(showdetails);
   document.getElementById("list").appendChild(sublistContent);
-  console.log(item.date)
-});
-
-  
+  console.log(item.date);
+})
+  }
 }
-
-
-
 //Function To Add Expenses
 checkAmountButton.addEventListener("click", () => {
   //empty checks
@@ -130,14 +133,55 @@ checkAmountButton.addEventListener("click", () => {
   //Empty inputs
   productTitle.value = "";
   userAmount.value = "";
+  
 });
-function showdetails(){
-  
-  
-  window.open("index.html")
-  
-  }
+
+  window.onload=display
   function display(){
-    let data=JSON.parse(localStorage.getItem('data'))||[]
-  }
-  
+    let dat=JSON.parse(localStorage.getItem("username"))
+    let data
+    dat=JSON.stringify(dat)
+    data=JSON.parse(localStorage.getItem(dat))||[]
+    console.log((dat))
+    const date=new Date()
+    data.forEach((item,index)=>{
+      const t=item.title
+      const a=item.amount
+    let sublistContent = document.createElement("div");
+    sublistContent.classList.add("sublist-content", "flex-space");
+    list.appendChild(sublistContent);
+    sublistContent.innerHTML = `<p class="product">${item.title}</p><p class="amount">${item.amount}</p>`;
+    let editButton = document.createElement("button");
+    editButton.classList.add("fa-solid", "fa-pen-to-square", "edit");
+    editButton.style.fontSize = "1.2em";
+    editButton.addEventListener("click", () => {
+      modifyElement(editButton, true);
+    });
+    let deleteButton = document.createElement("button");
+    deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
+    deleteButton.style.fontSize = "1.2em";
+    deleteButton.addEventListener("click", () => {
+      data.splice(index,1)
+      localStorage.setItem(dat,JSON.stringify(data))
+      modifyElement(deleteButton);
+    });
+    let showdetails=document.createElement("a");
+    showdetails.textContent="Show details";
+    showdetails.style.fontsize="1.2em";
+    showdetails.style.textDecoration="none";
+    showdetails.style.cursor="pointer";
+    showdetails.href="index.html";
+    showdetails.addEventListener('click',()=>{
+      localStorage.setItem('title',JSON.stringify(item.title))
+      localStorage.setItem('amount',JSON.stringify(item.amount))
+      localStorage.setItem('date',JSON.stringify(item.date))
+    })
+    sublistContent.appendChild(editButton);
+    sublistContent.appendChild(deleteButton);
+    sublistContent.appendChild(showdetails);
+    document.getElementById("list").appendChild(sublistContent);
+    console.log(item.date);
+    console.log(dat)
+    })
+
+}

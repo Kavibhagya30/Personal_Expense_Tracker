@@ -18,10 +18,7 @@
       <td class="td">User Name:</td>
       <td id="username"></td>
   </tr>
-  <tr>
-    <td class="td">Expense Category:</td>
-    <td></td>
-  </tr>
+
   <tr>
     <td class="td">
       Expense Description:
@@ -33,10 +30,6 @@
       Amount spent:
     </td>
     <td id="amount">Rs.</td>
-  </tr>
-  <tr>
-    <td class="td">Payment mode[UPI/cash]:</td>
-    <td></td>
   </tr>
   <tr>
     <td class="td">Date:</td>
@@ -51,13 +44,15 @@
   const username=document.getElementById("username")
   const title=document.getElementById("title")
   const amount=document.getElementById("amount")
+  const date=document.getElementById("date")
   let name=JSON.parse(localStorage.getItem('username'))
+  username.textContent=name
   let t=JSON.parse(localStorage.getItem('title'))
   let a=JSON.parse(localStorage.getItem('amount'))
-  username.textContent=name
+  let d=new Date(JSON.parse(localStorage.getItem('date')))
   title.textContent=t
   amount.textContent=a
-  const date=document.getElementById("date")
-  const d=new Date()
-  date.textContent=d.getDate()+"-"+d.getMonth()+1+"-"+d.getFullYear()
+  date.innerHTML=d.getDate()+"-"+d.getMonth()+1+"-"+d.getFullYear()+`<br>`+d.getHours()+":"+d.getMinutes()
+  console.log(t)
+  console.log(d)
 </script>

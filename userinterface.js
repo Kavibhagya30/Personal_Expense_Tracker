@@ -6,12 +6,16 @@ const password = document.querySelector('#password');
 const cpassword = document.querySelector('#cpassword');
 function storedata(){
 localStorage.setItem('username',JSON.stringify(username.value))
+window.location.href='main.html'
 }
 
-form.addEventListener('submit',(e)=>{
+form.addEventListener('click',(e)=>{
     
     if(!validateInputs()){
         e.preventDefault();
+    }
+    else{
+        storedata()
     }
 })
 
@@ -69,6 +73,7 @@ function validateInputs(){
     return success;
 
 }
+
 
 function setError(element,message){
     const inputGroup = element.parentElement;

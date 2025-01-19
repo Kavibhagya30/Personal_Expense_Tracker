@@ -36,6 +36,7 @@
             background-color:darkslateblue ;
             margin-left:200px;
             margin-top: 0px;
+            margin-bottom: 400px;
             
         }
         .one,.two,.three,.four,.five,.six,.seven,.eight,.nine{
@@ -44,15 +45,23 @@
             display:inline-block;
             animation-direction: reverse;
             background-color: darkslateblue;
-            height:0px;
+            height:1px;
         }
         .text{
-            margin-left: 30px;
+            margin-left: 34px;
+            text-align: center;
             height:0px;
             width:60pz;
             display: inline-block;
             color: azure;
+            font:bolder;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             
+        }
+        p{
+            font-size:20px;
+            margin-top: 0px;
+            text-align: center;
         }
         
     </style>
@@ -75,15 +84,15 @@
         <div class="nine"></div>
 
     <div class="rule">
-        <div class="text">Transport<br>(Rs.300)</div>
-        <div class="text">     Food&Dining<br>(Rs.400)</div>
-        <div class="text">   Snacks<br>(Rs.50)</div>
-        <div class="text">Travel<br>(Rs.150)</div>
-        <div class="text">Entertainment<br>(Rs.250)</div>
-        <div class="text">Health<br>(Rs.250)</div>
-        <div class="text">Shopping<br>(Rs.250)</div>
-        <div class="text">Education<br>(Rs.250)</div>
-        <div class="text">Miscellaneous<br>(Rs.250)</div>
+        <div class="text">Transport<p id="1">Rs.0.00</p></div>
+        <div class="text" style="margin-left: 15px;">     Food&Dining<br><p id="2">Rs.0.00</p></div>
+        <div class="text" style="margin-left: 10px;">   Snacks<br><p id="3">Rs.0.00</p></div>
+        <div class="text" >Travel<br><p id="4">Rs.0.00</p></div>
+        <div class="text" style="margin-left: 15px;">Entertainment<br><p id="5">Rs.0.00</p></div>
+        <div class="text" style="margin-left: 13px;">Health<br><p id="6">Rs.0.00</p></div>
+        <div class="text" style="margin-left: 20px;">Shopping<br><p id="7">Rs.0.00</p></div>
+        <div class="text" style="margin-left: 20px;">Education<br><p id="8">Rs.0.00</p></div>
+        <div class="text" style="margin-left: 20px;">Miscellaneous<br><p id="9">Rs.0.00</p></div>
 
 
 
@@ -102,16 +111,22 @@
     const x8=document.querySelector('.eight')
     const x9=document.querySelector('.nine')
     var m=n=o=p=q=r=s=t=u=0
-    let d=JSON.parse(localStorage.getItem('graphdata'))||[]
-    d.forEach((item,index)=>{
+  let dat=JSON.parse(localStorage.getItem("username"))
+  console.log(dat)
+  dat=JSON.stringify(dat)
+    let data=JSON.parse(localStorage.getItem(dat))||[]
+    console.log(data)
+    data.forEach((item,index)=>{
+        console.log(item.title)
         if(item.title=="Snacks"){
             m+=parseInt(item.amount);
+            document.getElementById("3").textContent="Rs."+m
             if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
             x3.style.height=m+"px";
             console.log(m)
             }
             else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
-            x3.style.height=m*0.75+"px"
+            x3.style.height=m*0.65+"px"
             }
             else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
             x3.style.height=m*0.5+"px"
@@ -120,44 +135,118 @@
         }
         else if(item.title=="Food & Dining"){
             n+=parseInt(item.amount)
-            x2.style.height=n+"px"
+            document.getElementById("2").textContent="Rs."+n
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x2.style.height=n+"px";
             console.log(n)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x2.style.height=n*0.65+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x2.style.height=n*0.5+"px"
+            }
         }
         else if(item.title=="Transportation"){
             o+=parseInt(item.amount)
-            x1.style.height=o+"px"
+            document.getElementById("1").textContent="Rs."+o
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x1.style.height=o+"px";
             console.log(o)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x1.style.height=o*0.65+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x1.style.height=o*0.5+"px"
+            }
+
         }
         else if(item.title=="Travel"){
             p+=parseInt(item.amount)
-            x4.style.height=p+"px"
+            document.getElementById("4").textContent="Rs."+p
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x4.style.height=p+"px";
             console.log(p)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x4.style.height=p*0.65+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x4.style.height=p*0.5+"px"
+            }
+
         }
         else if(item.title=="Entertainment"){
             q+=parseInt(item.amount)
-            x5.style.height=q+"px"
+            document.getElementById("5").textContent="Rs."+q
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x5.style.height=q+"px";
             console.log(q)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x5.style.height=q*0.65+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x5.style.height=q*0.5+"px"
+            }
         }
         else if(item.title=="Health & Wellness"){
             r+=parseInt(item.amount)
-            x6.style.height=r+"px"
+            document.getElementById("6").textContent="Rs."+r
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x6.style.height=r+"px";
             console.log(r)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x6.style.height=r*0.65+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x6.style.height=r*0.5+"px"
+            }
         }
 
         else if(item.title=="Shopping"){
             s+=parseInt(item.amount)
-            x7.style.height=s+"px"
+            document.getElementById("7").textContent="Rs."+s
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x7.style.height=s+"px";
             console.log(s)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x7.style.height=s*0.65+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x7.style.height=s*0.5+"px"
+            }
         }
         else if(item.title=="Education"){
             t+=parseInt(item.amount)
-            x8.style.height=t+"px"
+            document.getElementById("8").textContent="Rs."+t
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x8.style.height=t+"px";
             console.log(t)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x8.style.height=t*0.65+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x8.style.height=t*0.5+"px"
+            }
         }
         else if(item.title=="Miscellaneous"){
             u+=parseInt(item.amount)
-            x9.style.height=u+"px"
+            document.getElementById("9").textContent="Rs."+u
+            if(m<=500 && n<=500 && o<=500 && p<=500 && q<=500 && r<=500 && s<=500 && t<=500 && u<=500){
+            x9.style.height=u+"px";
             console.log(u)
+            }
+            else if(m<=750 && n<=750 && o<=750 && p<=750 && q<=750 && r<=750 && s<=750 && t<=750 && u<=750){
+            x9.style.height=u*0.65+"px"
+            }
+            else if(m,n,o,p,q,r,s,t,u<=1000 && m,n,o,p,q,r,s,t,u>750){
+            x9.style.height=u*0.5+"px"
+            }
         }    
 })
 </script>
